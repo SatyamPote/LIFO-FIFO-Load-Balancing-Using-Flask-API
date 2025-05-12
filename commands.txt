@@ -1,0 +1,27 @@
+📌 FIFO Terminal Commands:
+
+go run client.go --api_url http://localhost:5000/api/process_fifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5001/api/process_fifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5002/api/process_fifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5003/api/process_fifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5004/api/process_fifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5005/api/process_fifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5006/api/process_fifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5007/api/process_fifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5008/api/process_fifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5009/api/process_fifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5010/api/process_fifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+
+📌 LIFO Terminal Commands:
+
+go run client.go --api_url http://localhost:5000/api/process_lifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5001/api/process_lifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5002/api/process_lifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5003/api/process_lifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5004/api/process_lifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5005/api/process_lifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5006/api/process_lifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5007/api/process_lifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5008/api/process_lifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5009/api/process_lifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
+go run client.go --api_url http://localhost:5010/api/process_lifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
