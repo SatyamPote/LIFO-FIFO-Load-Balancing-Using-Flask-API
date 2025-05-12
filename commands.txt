@@ -1,3 +1,5 @@
+ go run main.go
+
 📌 FIFO Terminal Commands:
 
 go run client.go --api_url http://localhost:5000/api/process_fifo --num_requests 1000 --concurrency 50 --request_data '{"data": "hello satyam"}'
