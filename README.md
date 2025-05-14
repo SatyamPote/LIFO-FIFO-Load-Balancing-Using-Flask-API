@@ -1,39 +1,20 @@
 # Concurrent API with Load Balancing and Request Queuing
 
-> A project demonstrating concurrent request handling and load balancing strategies in REST APIs using Python (Flask), Go, and Node.js. This project aims to showcase the different approaches, compare performance characteristics (throughput, average response time, error rates), and understand the trade-offs involved in choosing these strategies.
+![Image](https://github.com/user-attachments/assets/7be16cee-97e2-49de-91a2-d309485d57dc)
 
-## Project Structure
-
-project_concurrency/
-├── api/ # Common API code
-│ ├── load_balancer.py # Load Balancer (Python)
-│ ├── load_balancer.go # Load Balancer (Go)
-│ └── ... # (Other API components, if any)
-├── src/
-│ ├── client.py # Python client
-│ ├── client/
-│ │ └── client.go # Go client
-│ └── server.js # Node.js server (Load Balancer)
-├── generate_client_commands.py # Generates client commands (Python)
-├── generate_client_commands.go # Generates client commands (Go)
-├── run_tests.sh
-├── go.mod # (Go module definition)
-├── package.json # (Node.js project config)
-└── README.md # (This file)
-
-
-
+> A project demonstrating concurrent request handling and load balancing strategies in REST APIs using Python (Flask), Go, and Node.js. This project showcases different concurrency approaches, compares performance characteristics (throughput, average response time, error rates), and examines the trade-offs involved in choosing these strategies.
 
 ## Technologies Used
 
-*   **Python:**  Flask (web framework), threading.
-*   **Go:**  Goroutines and channels.
+*   **Python:** Flask (web framework), threading.
+*   **Go:** Goroutines and channels.
 *   **Node.js:** Express.js (web framework).
 *   **Concurrency:** Threads (Python), Goroutines (Go), Asynchronous Operations (Node.js).
-*   **Load Balancing:** Implemented using various techniques for example a dedicated load balancer.
+*   **Load Balancing:** Implemented using various techniques including a dedicated load balancer.
 *   **Request Queuing:** FIFO and LIFO queuing strategies.
-*   **HTTP Clients:**  `requests` (Python), `net/http` (Go), `axios` (Node.js).
+*   **HTTP Clients:** `requests` (Python), `net/http` (Go), `axios` (Node.js).
 *   **Command-Line Argument Parsing:** `argparse` (Python), `flag` (Go), `commander` (Node.js).
+*   **Performance Measurement:** `time`, `perf_hooks`.
 
 ## Setup and Installation
 
@@ -73,7 +54,6 @@ project_concurrency/
         cd project_concurrency
         npm install
         ```
-
         *   (If you are missing dependencies, you will need to install them.)
             ```bash
             cd project_concurrency/
@@ -82,7 +62,7 @@ project_concurrency/
 
 ## Running the Projects
 
-*   **Important:**  Make sure to have the correct directory structure before running each set of commands.
+*   **Important:**  Make sure to have the correct directory structure before running each set of commands.  Ensure the correct code is used to run the test.
 
 ### 1. Python (Flask) Implementation
 
@@ -92,13 +72,13 @@ project_concurrency/
     python -m api.app
     ```
     Keep this terminal open.
-2.  **Generate Client Commands:**
+2.  **Run the Python Clients (in separate terminals):**
     ```bash
-    cd project_concurrency
-    python generate_client_commands.py  # Generates the client commands
+    # Example, adjust parameters as needed
+    python src/client.py --api_url http://localhost:5000/api/process_fifo --num_requests 1000 --concurrency 10
+    python src/client.py --api_url http://localhost:5000/api/process_lifo --num_requests 1000 --concurrency 10
+    #Run test for each process with different request count and concurrency.
     ```
-    *   Copy the output client commands.
-3.  **Run the Python Clients (in separate terminals):** Paste each of the client commands into *separate* terminal windows, and run. This will send the requests.
 
 ### 2. Go Implementation
 
@@ -110,35 +90,30 @@ project_concurrency/
     ```
     *   The `api/main.go` file must include the correct ports to listen on.
     *   Keep this terminal open.
-2.  **Generate Client Commands:**
+2.  **Run the Go Clients (in separate terminals):**
     ```bash
-    cd project_concurrency
-    go run generate_client_commands.go
+    # Example, adjust parameters as needed
+    go run src/client/client.go --api_url http://localhost:5001/api/process_fifo --num_requests 1000 --concurrency 10
+    go run src/client/client.go --api_url http://localhost:5001/api/process_lifo --num_requests 1000 --concurrency 10
+    #Run test for each process with different request count and concurrency.
     ```
-    *   Copy the output client commands.
-3.  **Run the Go Clients (in separate terminals):** Paste each of the client commands into *separate* terminal windows and run them.
 
 ### 3. Node.js Implementation
 
 1.  **Run the Node.js API Server:**
     ```bash
-    cd project_concurrency_node
+    cd project_concurrency
     node src/server.js
     ```
     Keep this terminal open.
 
-2.  **Run the Client Test:** The `run_test.sh` runs the command line arguments.
-3.  **Alternatively:**
-    *   **Run Client Directly:**
-
-        ```bash
-        cd project_concurrency_node
-        node src/client.js --api_url http://localhost:3000/api/process_fifo --num_requests 1000 --concurrency 50
-        ```
-
-        ```bash
-        node src/client.js --api_url http://localhost:3000/api/process_lifo --num_requests 1000 --concurrency 50
-        ```
+2.  **Run the Client Test:**
+    ```bash
+     # Example, adjust parameters as needed
+    node src/client.js --api_url http://localhost:3000/api/process_fifo --num_requests 1000 --concurrency 10
+    node src/client.js --api_url http://localhost:3000/api/process_lifo --num_requests 1000 --concurrency 10
+    #Run test for each process with different request count and concurrency.
+    ```
 
 **Important Notes:**
 
@@ -148,28 +123,20 @@ project_concurrency/
 *   **Analyze the Output:** Examine the output from *each* client program to assess performance metrics. This is the most critical step.
 *   **Testing with Correct Arguments:** Each time you test, make sure to run the test with the correct code.
 
-## Analyzing Results
+## Analyzing Results and Performance
 
-*   **Examine the Client Outputs:**  Each client program will output the performance metrics:
-    *   `Successful Requests:`
-    *   `Failed Requests:`
-    *   `Total Time:`
-    *   `Average Response Time:`
-    *   `Throughput:`
-    *   `Error Summary:`
+The performance metrics can be gathered from the logs of the clients and then displayed in a table and chart.
 
-*   **Compare the Results:**
-    *   Compare the results for different queuing strategies (FIFO vs. LIFO).
-    *   Compare the results across different concurrency levels.
+### Performance Metrics
 
-## Further Development
+*   **Throughput:** Requests per second (RPS).
+*   **Average Response Time:** Mean time to respond (ms).
+*   **Error Rates:** Failed request percentage.
 
-*   Implement persistent storage (e.g., database) for request data.
-*   Integrate a more sophisticated load balancing strategy.
-*   Add more comprehensive performance monitoring and reporting.
-*   Explore different queuing algorithms.
-*   Enhance error handling.
+### Results (Illustrative)
 
-## License
+![Results Table](https://github.com/user-attachments/assets/9acf2bfb-5090-400e-9b4e-f72359d0f144)
 
-[Choose a license and add it here, e.g., MIT, Apache 2.0, etc.  Consider creating a LICENSE file as well.]
+### Bar Graph (Example)
+
+![Performance Comparison Graph](https://github.com/user-attachments/assets/ea0ca9e1-2b8a-4191-bb30-91c4a9e67999)
